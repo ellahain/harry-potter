@@ -40,3 +40,19 @@ export async function getCharactersByHouse(house: string): Promise<Character[]> 
         return [];
     }
 }
+
+export async function getCharacterById(id: string): Promise<Character | null> {
+    try {
+        const response = await fetch(`https://hp-api.onrender.com/api/character/${id}`);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch character with ID: ${id}`);
+        }
+
+        const data = await response.json();
+        return data[0] || null; // API returns an array of one character, so we take the first element
+    } catch (error) {
+        console.error('Error fetching character:', error);
+        return null;
+    }
+}
