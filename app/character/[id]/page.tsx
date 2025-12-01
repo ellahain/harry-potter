@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {Character, getCharacterById} from "@/app/lib/api";
+import Image from "next/image";
 
 export default function CharacterDetail() {
     const params = useParams<{ id: string }>();
@@ -78,17 +79,14 @@ export default function CharacterDetail() {
             <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
                 <div className="md:flex">
                     <div className="md:flex-shrink-0">
-                        {character.image ? (
-                            <img
-                                src={character.image}
+                        <div className="relative h-96 w-full md:w-96">
+                            <Image
+                                src={character.image || "/harry-potter-books.png"}
                                 alt={character.name}
-                                className="h-96 w-full object-cover md:w-96"
+                                fill
+                                className="object-cover"
                             />
-                        ) : (
-                            <div className="h-96 w-full bg-gray-200 flex items-center justify-center">
-                                <span className="text-gray-500 text-2xl">No Image</span>
-                            </div>
-                        )}
+                        </div>
                     </div>
 
                     {/* Details Section */}
