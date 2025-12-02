@@ -1,5 +1,5 @@
 "use client"
-
+import '../globals.css'
 import Image from "next/image";
 import {useState} from "react";
 import Two from "../components/Two";
@@ -7,8 +7,8 @@ import Two from "../components/Two";
 
 export default function QuestionOne({value}: { value: number }) {
     console.log(value)
-    const imageStyling = "mx-10 w-[16vw] h-[32vh] inline border-pink-950 border-4 object-fill"
-    const labelStyling = "w-[16vw] mx-auto mb-10"
+    const imageStyling = "mx-10! w-[16vw]! h-[32vh]! inline! border-pink-950! rounded-t-md! border-6!  object-fill! hover:cursor-pointer!"
+    const labelStyling = "bg-pink-950! rounded-b-md! text-white! p-1! w-[16vw]! mx-auto! mb-10! font-bold! text-xl! "
 
     const [score, setScore] = useState(value);
     const [nextQ, setNextQ] = useState(true);
@@ -32,10 +32,10 @@ export default function QuestionOne({value}: { value: number }) {
     }
 
     return (
-        <>{nextQ ? <div className="text-center mt-20">
-                <h1 className="block mb-6">Choose a dessert</h1>
-                <div className="flex flex-row justify-center items-center">
-                    <div className="inline">
+        <>{nextQ ? <div className="text-center">
+                <h1 className="block! bg-pink-950! text-white! py-5! mb-6! text-4xl! font-bold font-[MedievalSharp]!">Choose a dessert</h1>
+                <div className="flex! flex-row! justify-center! items-center!">
+                    <div className="inline!">
                         <button onClick={() => addScore(1)}>
                             <Image src="/cupcakes.jpg" alt="Strawberry Cupcakes" width={200} height={200}
                                    className={imageStyling}/>
