@@ -55,10 +55,12 @@ export default function House() {
                 <p className="text-xl font-[MedievalSharp] mb-10!">
                     You&#39;ve been sorted into House {house}
                 </p>
-                <Link href="/" className="bg-black mt-50! text-white p-3 ">Take the quiz again</Link>
-                </div>
+                <Link href="/" className="bg-white text-black p-3 font-[MedievalSharp] hover:bg-gray-200 cursor-pointer">Take the quiz again</Link>
+            </div>
 
-            <button className={`${bgColor} text-white m-2! p-2 mx-auto! hover: cursor-pointer`} onClick={()=> {setBool(true)}}>Save your result</button>
+            <div className="flex justify-center" style={{marginTop: '30px'}}>
+                <button className={`${bgColor} text-white p-3 hover:cursor-pointer font-[MedievalSharp]`} onClick={()=> {setBool(true)}}>Save your result</button>
+            </div>
             {bool? <NewResultForm house={house}/>:null}
 
             {/* Characters Section */}
