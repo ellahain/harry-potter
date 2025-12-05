@@ -1,3 +1,15 @@
+/**
+ * CHARACTER DETAIL PAGE - Alena
+ * Displays comprehensive information about a single Harry Potter character.
+ * Shows character portrait, biographical details, wand information, and house affiliation.
+ *
+ * - Dynamic route based on character ID from URL
+ * - Fetches detailed character data from HP API
+ *
+ * Styling - Greta
+ * API uses getCharacterById function from api.ts
+ */
+
 "use client";
 import '../../globals.css'
 import { useParams } from "next/navigation";
@@ -6,14 +18,24 @@ import {Character, getCharacterById} from "@/app/lib/api";
 import Image from "next/image";
 
 export default function CharacterDetail() {
+    // Extract character ID from URL params using Next.js useParams hook.
     const params = useParams<{ id: string }>();
     const characterId = params.id;
-
     const [character, setCharacter] = useState<Character | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        /**
+         * Fetches individual character details from HP API
+         * 3. Call API utility with character ID
+         * 4. If data returned: store in character state
+         * 5. If no data: set error message (character doesn't exist)
+         *
+         * Async function required for API call.
+         * If/else checks handle case where API succeeds but returns null (non-existent character).
+         * Try-catch-finally ensures loading state is cleared even on error
+         */
         async function fetchCharacter() {
             if (!characterId) return;
 
@@ -71,9 +93,9 @@ export default function CharacterDetail() {
         Slytherin: "text-green-700"
     };
 
+    // Dynamic Text Color Selection
     const houseTextColor = houseTextColors[character.house] || "text-gray-900";
 
-    // Simple layout to display some details
     return (
         <div className="bg-[url(/background2.jpg)] bg-contain bg-center bg-repeat min-h-screen w-full flex items-center justify-center px-4 py-12">
             <div className="max-w-4xl w-full bg-white shadow-lg rounded-xl overflow-hidden">
@@ -99,7 +121,6 @@ export default function CharacterDetail() {
                             <p><strong>Patronus:</strong> {character.patronus || 'N/A'}</p>
                             <p><strong>Ancestry:</strong> {character.ancestry || 'N/A'}</p>
                             <p><strong>Actor:</strong> {character.actor || 'N/A'}</p>
-
                             {character.wand.wood && (
                                 <p>
                                     <strong>Wand:</strong> {character.wand.wood} wood, {character.wand.core} core

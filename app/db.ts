@@ -1,3 +1,12 @@
+/**
+ * MONGODB DATABASE CONNECTION - Ella
+ * Provides centralized MongoDB database connection and collection access for the application.
+ * Manages connection lifecycle and reuses connections.
+ *
+ * - Singleton pattern for MongoDB client (reuses connection)
+ * - Environment-based configuration
+ * - Type-safe collection access
+ */
 import {MongoClient, Db, Collection} from 'mongodb';
 
 const MONGO_URI = process.env.MONGO_URI as string;

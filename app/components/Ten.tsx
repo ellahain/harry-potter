@@ -1,34 +1,53 @@
+/**
+ * QUESTION TEN
+ * Final question in the Harry Potter house sorting quiz.
+ * Presents four tech company choices and calculates final house result.
+ *
+ * - Four tech company faction options with logos
+ * - Each choice adds/subtracts final points to score
+ * - Calculates final house based on total score
+ * - Navigates to results page with determined house
+ * - value: Accumulated score from all previous questions
+ */
+
 "use client"
 import '../globals.css'
 import Image from "next/image";
 import {useState} from "react";
 import {useRouter} from "next/navigation"
 import getResult from "../lib/getResult";
-import {divStyling, headerStyling, imageStyling, labelStyling} from "@/app/components/One";
+import {divStyling, imageStyling, labelStyling} from "@/app/components/One";
 
 
 export default function QuestionTen({value}: { value: number }) {
-
     const [score, setScore] = useState(value);
     const router = useRouter();
 
-
-
-
+    /**
+     * Processes final choice, calculates house, and navigates to results
+     * 1. Updates score based on choice (same pattern as other questions)
+     * 2. Calls getResult utility to determine house from final score
+     * 3. Navigates to results page with determined house name
+     */
     function addScore(choice: number) {
         if (choice === 1) {
             setScore(value);
-        } else if (choice === 2) {
+        }
+        else if (choice === 2) {
             setScore(value + 1);
-        } else if (choice === 3) {
+        }
+        else if (choice === 3) {
             setScore(value + 2);
-        } else if (choice === 4) {
+        }
+        else if (choice === 4) {
             setScore(value - 1);
         }
 
+        // getResult function takes final score and returns house name as string
         const house = getResult(score);
-        router.push(`/results/${house}`);
 
+        // Push to results route with house name
+        router.push(`/results/${house}`);
     }
 
     return (
