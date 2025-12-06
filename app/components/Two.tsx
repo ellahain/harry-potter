@@ -1,3 +1,14 @@
+/**
+ * QUESTION TWO - Ella
+ * Second question in the Harry Potter house sorting quiz.
+ * Presents four season choices that influence the user's house score.
+ *
+ * - Four season options with images
+ * - Each choice adds/subtracts different points to running score
+ * - Advances to next question (Three component) after selection
+ * Adds accumulated score from previous questions
+ */
+
 "use client"
 
 import Image from "next/image";
@@ -12,6 +23,7 @@ export default function QuestionTwo({value}: { value: number }) {
     const [nextQ, setNextQ] = useState(true);
 
 
+    // same logic as prior component
     function addScore(choice: number) {
         if (choice === 1) {
             setScore(value + 2);

@@ -1,3 +1,14 @@
+/**
+ * QUESTION NINE - Ella
+ * 9th question in the Harry Potter house sorting quiz.
+ * Presents a yes or no choice that influence the user's house score.
+ *
+ * - Two yes/no options with images
+ * - Each choice adds/subtracts different points to running score
+ * - Advances to next question (Four component) after selection
+ * Adds accumulated score from previous questions
+ */
+
 "use client"
 import '../globals.css'
 import Image from "next/image";
@@ -11,7 +22,7 @@ export default function QuestionNine({value}: { value: number }) {
     const [score, setScore] = useState(value);
     const [nextQ, setNextQ] = useState(true);
 
-
+    // same logic as prior component but with 2 options rather than 4
     function addScore(choice: number) {
         if (choice === 1) {
             setScore(value - 1);

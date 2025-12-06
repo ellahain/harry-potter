@@ -1,5 +1,5 @@
 /**
- * QUESTION ONE COMPONENT - Ella
+ * QUESTION ONE - Ella
  * First question in the Harry Potter house sorting quiz.
  * Presents four dessert choices that influence the user's house score.
  *

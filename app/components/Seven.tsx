@@ -1,3 +1,14 @@
+/**
+ * QUESTION SEVEN - Ella
+ * Seventh question in the Harry Potter house sorting quiz.
+ * Presents four book choices that influence the user's house score.
+ *
+ * - Four book options with images
+ * - Each choice adds/subtracts different points to running score
+ * - Advances to next question (Four component) after selection
+ * Adds accumulated score from previous questions
+ */
+
 "use client"
 import '../globals.css'
 import Image from "next/image";
@@ -11,7 +22,7 @@ export default function QuestionSeven({value}: { value: number }) {
     const [score, setScore] = useState(value);
     const [nextQ, setNextQ] = useState(true);
 
-
+    // same logic as prior component
     function addScore(choice: number) {
         if (choice === 1) {
             setScore(value);
