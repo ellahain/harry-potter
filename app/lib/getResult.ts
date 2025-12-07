@@ -1,5 +1,5 @@
 
-
+/*This function gets the user's final score from the quiz and returns the House result*/
 export default function getResult(finalResult:number):string{
     console.log(finalResult);
     let house = "";
